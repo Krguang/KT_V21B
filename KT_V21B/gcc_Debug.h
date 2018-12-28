@@ -1372,12 +1372,12 @@
 //$(TOOLCHAIN_ROOT)\arm-eabi\sys-include
 //$(TOOLCHAIN_ROOT)\arm-eabi\include
 //../Drivers/CMSIS/Include
+//../Bsp/Inc
 //..\Inc
 //..\Drivers\CMSIS\Device\ST\STM32F1xx\Include
 //..\Drivers\STM32F1xx_HAL_Driver\Inc
 //..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
 //..\Drivers\STM32F1xx_HAL_Driver\Src
-//../Bsp/Inc
 // --- Include directories end --- //
 
 

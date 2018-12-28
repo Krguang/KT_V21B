@@ -80,10 +80,10 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define led_uart2_state_Pin GPIO_PIN_2
 #define led_uart2_state_GPIO_Port GPIOE
-#define key_temp_up_Pin GPIO_PIN_0
-#define key_temp_up_GPIO_Port GPIOC
-#define key_temp_down_Pin GPIO_PIN_1
-#define key_temp_down_GPIO_Port GPIOC
+#define key_humi_down_Pin GPIO_PIN_0
+#define key_humi_down_GPIO_Port GPIOC
+#define key_humi_up_Pin GPIO_PIN_1
+#define key_humi_up_GPIO_Port GPIOC
 #define led_key4_Pin GPIO_PIN_2
 #define led_key4_GPIO_Port GPIOC
 #define key_4_Pin GPIO_PIN_3
@@ -130,8 +130,8 @@ void Error_Handler(void);
 #define key_1_GPIO_Port GPIOB
 #define led_key1_Pin GPIO_PIN_11
 #define led_key1_GPIO_Port GPIOB
-#define key_humi_down_Pin GPIO_PIN_12
-#define key_humi_down_GPIO_Port GPIOB
+#define key_temp_up_Pin GPIO_PIN_12
+#define key_temp_up_GPIO_Port GPIOB
 #define led_state_5_Pin GPIO_PIN_13
 #define led_state_5_GPIO_Port GPIOB
 #define led_state_4_Pin GPIO_PIN_14
@@ -142,8 +142,8 @@ void Error_Handler(void);
 #define led_state_2_GPIO_Port GPIOD
 #define led_state_1_Pin GPIO_PIN_10
 #define led_state_1_GPIO_Port GPIOD
-#define key_humi_up_Pin GPIO_PIN_11
-#define key_humi_up_GPIO_Port GPIOD
+#define key_temp_down_Pin GPIO_PIN_11
+#define key_temp_down_GPIO_Port GPIOD
 #define led_uart1_state_Pin GPIO_PIN_12
 #define led_uart1_state_GPIO_Port GPIOD
 #define baud_set_Pin GPIO_PIN_8

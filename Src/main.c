@@ -94,7 +94,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	uint8_t ucKeyCode;				/* 按键代码 */
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -122,8 +122,6 @@ int main(void)
   MX_DAC_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
-
-
   bsp_Init();
   /* USER CODE END 2 */
 
@@ -136,9 +134,34 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 	  bsp_Idle();
+	  ucKeyCode = bsp_GetKey();	/* 读取键值, 无键按下时返回 KEY_NONE = 0 */
 
-	  bsp_printf("hello\r\n");
-	  HAL_Delay(500);
+	  /*
+	  if (ucKeyCode != KEY_NONE)
+	  {	
+		  switch (ucKeyCode)
+		  {
+		  case KEY_1_DOWN:
+			  bsp_printf("key1 press down\r\n");
+			  break;
+		  case KEY_2_DOWN:
+			  bsp_printf("key2 press down\r\n");
+			  break;
+		  case KEY_3_DOWN:
+			  bsp_printf("key3 press down\r\n");
+			  break;
+		  case KEY_4_DOWN:
+			  bsp_printf("key4 press down\r\n");
+			  break;
+		  default:
+			  break;
+		  }
+	  }
+	  */
+
+	  printf("key value = %d \r\n", ucKeyCode);
+	  HAL_Delay(100);
+
   }
   /* USER CODE END 3 */
 }

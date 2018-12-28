@@ -25,10 +25,12 @@ uint32_t ADC_Average[3];
 */
 void bsp_Init(void)
 {
+	bsp_InitKey();		/* 按键要在定时器前初始化，不然定时器开始扫描按键时，却没有初始化 */
 	bsp_InitTimer();	/* 定时器初始化 */
 	bsp_InitUart(); 	/* 初始化串口 */
 	bsp_InitADC();		/* 初始化adc */
 	bsp_InitDAC();		/* 初始化dac */
+	
 }
 
 /*
@@ -42,7 +44,7 @@ void bsp_Init(void)
 */
 void bsp_RunPer10ms(void)
 {
-	//bsp_KeyScan();		/* 按键扫描 */
+	bsp_KeyScan();		/* 按键扫描 */
 }
 
 /*

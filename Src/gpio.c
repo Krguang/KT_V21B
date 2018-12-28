@@ -109,7 +109,7 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PCPin PCPin PCPin PCPin */
-  GPIO_InitStruct.Pin = key_temp_up_Pin|key_temp_down_Pin|key_4_Pin|key_2_Pin;
+  GPIO_InitStruct.Pin = key_humi_down_Pin|key_humi_up_Pin|key_4_Pin|key_2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -146,7 +146,7 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PBPin PBPin PBPin */
-  GPIO_InitStruct.Pin = switch_in1_Pin|key_1_Pin|key_humi_down_Pin;
+  GPIO_InitStruct.Pin = switch_in1_Pin|key_1_Pin|key_temp_up_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -169,10 +169,10 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PtPin */
-  GPIO_InitStruct.Pin = key_humi_up_Pin;
+  GPIO_InitStruct.Pin = key_temp_down_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(key_humi_up_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(key_temp_down_GPIO_Port, &GPIO_InitStruct);
 
 }
 
