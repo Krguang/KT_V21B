@@ -135,7 +135,6 @@ int main(void)
 
 	  bsp_Idle();
 	  ucKeyCode = bsp_GetKey();	/* 读取键值, 无键按下时返回 KEY_NONE = 0 */
-
 	  /*
 	  if (ucKeyCode != KEY_NONE)
 	  {	
@@ -153,15 +152,35 @@ int main(void)
 		  case KEY_4_DOWN:
 			  bsp_printf("key4 press down\r\n");
 			  break;
+		  case KEY_5_DOWN:
+			  bsp_printf("key5 press down\r\n");
+			  break;
+		  case KEY_6_DOWN:
+			  bsp_printf("key6 press down\r\n");
+			  break;
+		  case KEY_7_DOWN:
+			  bsp_printf("key7 press down\r\n");
+			  break;
+		  case KEY_8_DOWN:
+			  bsp_printf("key8 press down\r\n");
+			  break;
+		  case KEY_9_DOWN:
+			  bsp_printf("key9 press down\r\n");
+			  break;
+		  case KEY_10_DOWN:
+			  bsp_printf("key10 press down\r\n");
+			  break;
 		  default:
 			  break;
 		  }
 	  }
 	  */
 
-	  printf("key value = %d \r\n", ucKeyCode);
-	  HAL_Delay(100);
+	  displayString(0,"H-1");
+	  displayData(1, 10010);
 
+	//  printf("key value = %d \r\n", ucKeyCode);
+	//  HAL_Delay(100);
   }
   /* USER CODE END 3 */
 }

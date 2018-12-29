@@ -70,7 +70,7 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOE, led_uart2_state_Pin|digtal_led_6_Pin|beep_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOE, led_uart2_state_Pin|digtal_led_1_Pin|beep_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(led_key4_GPIO_Port, led_key4_Pin, GPIO_PIN_SET);
@@ -79,8 +79,8 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(led_key3_GPIO_Port, led_key3_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, led_key2_Pin|led_key1_Pin|digtal_led_1_Pin|digtal_led_2_Pin 
-                          |digtal_led_3_Pin|digtal_led_4_Pin|digtal_led_5_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, led_key2_Pin|led_key1_Pin|digtal_led_6_Pin|digtal_led_5_Pin 
+                          |digtal_led_4_Pin|digtal_led_3_Pin|digtal_led_2_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOE, relay5_Pin|relay4_Pin|relay3_Pin|relay2_Pin 
@@ -102,7 +102,7 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pins : PEPin PEPin PEPin PEPin 
                            PEPin PEPin PEPin PEPin */
   GPIO_InitStruct.Pin = led_uart2_state_Pin|relay5_Pin|relay4_Pin|relay3_Pin 
-                          |relay2_Pin|relay1_Pin|digtal_led_6_Pin|beep_Pin;
+                          |relay2_Pin|relay1_Pin|digtal_led_1_Pin|beep_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -138,8 +138,8 @@ void MX_GPIO_Init(void)
                            PBPin PBPin PBPin PBPin 
                            PBPin */
   GPIO_InitStruct.Pin = led_key2_Pin|led_key1_Pin|led_state_5_Pin|led_state_4_Pin 
-                          |digtal_led_1_Pin|digtal_led_2_Pin|digtal_led_3_Pin|digtal_led_4_Pin 
-                          |digtal_led_5_Pin;
+                          |digtal_led_6_Pin|digtal_led_5_Pin|digtal_led_4_Pin|digtal_led_3_Pin 
+                          |digtal_led_2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

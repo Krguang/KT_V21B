@@ -38,7 +38,7 @@ static uint8_t IsKeyDown10(void) { if (IsKeyDown3() && IsKeyDown4()) return 1; e
 void bsp_InitKey(void)
 {
 	bsp_InitKeyVar();		/* 初始化按键变量 */
-//	bsp_InitKeyHard();		/* 初始化按键硬件 */
+//	bsp_InitKeyHard();		/* 初始化按键硬件 引脚初始化已经在gpio.c种完成*/
 }
 
 /*

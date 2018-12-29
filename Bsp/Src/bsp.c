@@ -30,7 +30,6 @@ void bsp_Init(void)
 	bsp_InitUart(); 	/* 初始化串口 */
 	bsp_InitADC();		/* 初始化adc */
 	bsp_InitDAC();		/* 初始化dac */
-	
 }
 
 /*
