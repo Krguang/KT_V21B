@@ -1,5 +1,6 @@
 #include "bsp.h"
 #include "modbus_slave.h"
+#include "controlCenter.h"
 
 uint8_t usart1_rx_buffer[128];
 uint8_t usart1_tx_buffer[128];
@@ -13,6 +14,8 @@ uint8_t usart2_rx_flag = 0;
 
 volatile uint16_t ADC_ConvertedValue[3];
 uint32_t ADC_Average[3];
+
+volatile uint8_t g_blinkFlag_500ms;
 
 /*
 *********************************************************************************************************
@@ -48,6 +51,20 @@ void bsp_RunPer10ms(void)
 
 /*
 *********************************************************************************************************
+*	函 数 名: bsp_RunPer500ms
+*	功能说明: 该函数每隔500ms被Systick中断调用1次。详见 bsp_timer.c的定时中断服务程序。用于数码管和LED的闪烁
+*	形    参：无
+*	返 回 值: 无
+*********************************************************************************************************
+*/
+void bsp_RunPer500ms(void)
+{
+	g_blinkFlag_500ms = g_blinkFlag_500ms ^ 1;
+	//bsp_printf("%d \n", g_blinkFlag_200ms);
+}
+
+/*
+*********************************************************************************************************
 *	函 数 名: bsp_Idle
 *	功能说明: 空闲时执行的函数。一般主程序在for和while循环程序体中需要插入 CPU_IDLE() 宏来调用本函数。
 *			 本函数缺省为空操作。用户可以添加喂狗、设置CPU进入休眠模式的功能。
@@ -58,4 +75,5 @@ void bsp_RunPer10ms(void)
 void bsp_Idle(void)
 {
 	//modbus_Poll();	/* 从站 MODBUS函数 */
+	mainActivity();
 }

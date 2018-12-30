@@ -1,6 +1,8 @@
 #include "bsp.h"
 #include "tim.h"
 
+
+
 void bsp_InitTimer(void)
 {
 	HAL_TIM_Base_Start_IT(&htim6);
@@ -8,8 +10,17 @@ void bsp_InitTimer(void)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+	static uint8_t count = 0;
+
 	if (htim == &htim6)
 	{
 		bsp_RunPer10ms();
+	}
+
+	count++;
+	if (count > 50)
+	{
+		count = 0;
+		bsp_RunPer500ms();
 	}
 }

@@ -8,6 +8,7 @@
 #include "bsp_uart.h"
 #include "bsp_adc.h"
 #include "bsp_dac.h"
+#include "bsp_cpu_flash.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -19,6 +20,7 @@
 void bsp_Init(void);
 void bsp_Idle(void);
 void bsp_RunPer10ms(void);
+void bsp_RunPer500ms(void);
 
 extern uint8_t usart1_rx_buffer[];
 extern uint8_t usart1_tx_buffer[];
@@ -32,5 +34,8 @@ extern uint8_t usart2_rx_flag;
 
 extern volatile uint16_t ADC_ConvertedValue[];
 extern uint32_t ADC_Average[];
+
+extern volatile uint8_t g_blinkFlag_500ms;
+
 
 #endif

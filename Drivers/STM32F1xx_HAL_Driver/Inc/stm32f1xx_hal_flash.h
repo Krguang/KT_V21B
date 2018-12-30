@@ -272,6 +272,7 @@ typedef struct
   * @{
   */
 /* IO operation functions *****************************************************/
+
 HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
 HAL_StatusTypeDef HAL_FLASH_Program_IT(uint32_t TypeProgram, uint32_t Address, uint64_t Data);
 

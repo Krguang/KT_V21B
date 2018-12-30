@@ -351,6 +351,15 @@
     <ClCompile Include="..\Bsp\Src\bsp_dac.c">
       <Filter>Source files\Src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Bsp\Src\bsp_cpu_flash.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\controlCenter.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\dataProcessing.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Bsp\Inc\bsp_led_display.h">
@@ -364,6 +373,15 @@
     </ClInclude>
     <ClInclude Include="..\Bsp\Inc\bsp_dac.h">
       <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Bsp\Inc\bsp_cpu_flash.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\controlCenter.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\dataProcessing.h">
+      <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

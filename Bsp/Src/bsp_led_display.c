@@ -35,7 +35,7 @@ static void led_5_off() { HAL_GPIO_WritePin(digtal_led_5_GPIO_Port, digtal_led_5
 static void led_6_off() { HAL_GPIO_WritePin(digtal_led_6_GPIO_Port, digtal_led_6_Pin, GPIO_PIN_SET); }
 
 
-static uint8_t* intToFloat(uint16_t data) {
+static uint8_t* floatToChar(uint16_t data) {
 	static uint8_t floatTemp[5];
 	if (data<1000)
 	{
@@ -54,6 +54,19 @@ static uint8_t* intToFloat(uint16_t data) {
 	}
 
 	return floatTemp;
+}
+
+static uint8_t* intToChar(uint16_t data)
+{
+	static uint8_t charTemp[4];
+	if (data<1000)
+	{
+		charTemp[0] = (data / 100) % 10 + 48;
+		charTemp[1] = (data / 10) % 10 + 48;
+		charTemp[2] = data % 10 + 48;
+		charTemp[3] = '\0';
+	}
+	return charTemp;
 }
 
 /*
@@ -111,7 +124,7 @@ static void pointDisplay(uint8_t num, uint8_t data) {
 num : 1-6 对应 1-6数码管
 data : 要显示的数值
 */
-void displayNumber(uint8_t num, uint8_t data) {
+static void displayNumber(uint8_t num, uint8_t data) {
 
 	led_a_off();
 	led_b_off();
@@ -131,6 +144,15 @@ void displayNumber(uint8_t num, uint8_t data) {
 
 	switch (num)
 	{
+	case 0:
+
+		led_1_off();
+		led_2_off();
+		led_3_off();
+		led_4_off();
+		led_5_off();
+		led_6_off();
+		break;
 
 	case 1:
 
@@ -323,26 +345,6 @@ void displayNumber(uint8_t num, uint8_t data) {
 	HAL_Delay(1);
 }
 
-
-void displayDataLeft(uint16_t data)
-{
-	uint8_t *p = intToFloat(data);
-	uint8_t i = 1;
-
-	while (*p)
-	{
-		if (*p != '.') {
-
-			displayNumber(i++, *p);
-		}
-		else
-		{
-			pointDisplay(2, 1);
-		}
-		p++;
-	}
-}
-
 /*
 * eftrOrRight : 选择显示在左侧还是右侧 0：左侧，1：右侧
 * string : 要显示的字符串
@@ -377,11 +379,11 @@ void displayString(uint8_t leftrOrRight,char * string)
 			
 /*
 * eftrOrRight : 选择显示在左侧还是右侧 0：左侧，1：右侧
-* string : 要显示的字符串
+* data : 要显示的整形
 */
-void displayData(uint8_t leftrOrRight, uint16_t data)
+void displayFloat(uint8_t leftrOrRight, uint16_t data)
 {
-	uint8_t *p = intToFloat(data);
+	uint8_t *p = floatToChar(data);
 	uint8_t i;
 
 	if (leftrOrRight)
@@ -408,6 +410,79 @@ void displayData(uint8_t leftrOrRight, uint16_t data)
 				pointDisplay(2, 1);
 			}
 		}
+		p++;
+	}
+}
+
+/*
+* eftrOrRight : 选择显示在左侧还是右侧 0：左侧，1：右侧
+* data : 要显示的整形
+*/
+void displayFloatBlink(uint8_t leftrOrRight, uint16_t data)
+{
+
+	uint8_t *p = floatToChar(data);
+	uint8_t i;
+
+	uint8_t displayFlag = g_blinkFlag_500ms;
+
+	if (leftrOrRight)
+	{
+		i = 4;
+	}
+	else {
+		i = 1;
+	}
+
+	while (*p)
+	{
+		if (*p != '.') {
+			if (displayFlag)
+			{
+				displayNumber(i++, *p);
+			}
+			else
+			{
+				displayNumber(0, 0);
+			}
+		}
+		else
+		{
+			if (displayFlag)
+			{
+				if (leftrOrRight)
+				{
+					pointDisplay(4, 1);
+				}
+				else {
+					pointDisplay(2, 1);
+				}
+			}
+			else
+			{
+				pointDisplay(0, 0);
+			}
+		}
+		p++;
+	}
+}
+
+void displayInt(uint8_t leftrOrRight, uint16_t data)
+{
+	uint8_t *p = intToChar(data);
+	uint8_t i;
+
+	if (leftrOrRight)
+	{
+		i = 4;
+	}
+	else {
+		i = 1;
+	}
+
+	while (*p)
+	{
+		displayNumber(i++, *p);
 		p++;
 	}
 }

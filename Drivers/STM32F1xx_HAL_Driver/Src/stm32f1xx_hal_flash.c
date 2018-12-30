@@ -143,7 +143,7 @@ FLASH_ProcessTypeDef pFlash;
 /** @defgroup FLASH_Private_Functions FLASH Private Functions
   * @{
   */
-static  void   FLASH_Program_HalfWord(uint32_t Address, uint16_t Data);
+static void   FLASH_Program_HalfWord(uint32_t Address, uint16_t Data);
 static  void   FLASH_SetErrorCode(void);
 extern void    FLASH_PageErase(uint32_t PageAddress);
 /**

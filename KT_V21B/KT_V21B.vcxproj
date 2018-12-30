@@ -80,7 +80,10 @@
   <ItemGroup />
   <ItemGroup>
     <ClCompile Include="..\Bsp\Src\bsp_adc.c" />
+    <ClCompile Include="..\Bsp\Src\bsp_cpu_flash.c" />
     <ClCompile Include="..\Bsp\Src\bsp_dac.c" />
+    <ClCompile Include="..\Src\controlCenter.c" />
+    <ClCompile Include="..\Src\dataProcessing.c" />
     <ClCompile Include="..\Src\gpio.c" />
     <ClCompile Include="..\Src\adc.c" />
     <ClCompile Include="..\Src\dac.c" />
@@ -110,7 +113,10 @@
     <None Include="stm32.mak" />
     <ClCompile Include="$(BSP_ROOT)\STM32F1xxxx\StartupFiles\startup_stm32f103xe.c" />
     <ClInclude Include="..\Bsp\Inc\bsp_adc.h" />
+    <ClInclude Include="..\Bsp\Inc\bsp_cpu_flash.h" />
     <ClInclude Include="..\Bsp\Inc\bsp_dac.h" />
+    <ClInclude Include="..\Inc\controlCenter.h" />
+    <ClInclude Include="..\Inc\dataProcessing.h" />
     <ClInclude Include="..\Inc\gpio.h" />
     <ClInclude Include="..\Inc\adc.h" />
     <ClInclude Include="..\Inc\dac.h" />
