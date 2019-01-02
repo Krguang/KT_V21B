@@ -17,6 +17,7 @@ uint32_t ADC_Average[3];
 
 volatile uint8_t g_blinkFlag_500ms;
 
+
 /*
 *********************************************************************************************************
 *	函 数 名: bsp_Init
@@ -60,7 +61,8 @@ void bsp_RunPer10ms(void)
 void bsp_RunPer500ms(void)
 {
 	g_blinkFlag_500ms = g_blinkFlag_500ms ^ 1;
-	//bsp_printf("%d \n", g_blinkFlag_200ms);
+	tempSetCount++;
+	humiSetCount++;
 }
 
 /*
@@ -75,5 +77,5 @@ void bsp_RunPer500ms(void)
 void bsp_Idle(void)
 {
 	//modbus_Poll();	/* 从站 MODBUS函数 */
-	mainActivity();
+	modeSelect();
 }
