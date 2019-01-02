@@ -4,18 +4,25 @@
 
 #define FLASH_SAVE_ADDR  0X08030000		//设置FLASH 保存地址(必须为偶数，且其值要大于本代码所占用FLASH的大小+0X08000000)
 
-FlashVar flash;
-FlashVar flashTemp;
+FlashVar flash;					//存储在flash中的结构体
+FlashVar flashTemp;				//用于判断flash结构体是否变化的缓存
 
-uint8_t displayMode;	//显示模式 0：显示温湿度，1：显示设置界面；
+uint8_t displayMode;			//显示模式 0：显示温湿度，1：显示设置界面；
 
-uint16_t tempValue;
-uint16_t humiValue;
+uint16_t tempValue;				//温度实时值
+uint16_t humiValue;				//湿度实时值
 
-uint8_t ucKeyCode;				/* 按键代码 */
+uint8_t ucKeyCode;				//按键代码
 
 uint32_t tempSetCount = 10;		//温度设定计时
 uint32_t humiSetCount = 10;		//湿度设定计时
+
+uint8_t fanStatus;				//风机状态
+uint8_t standbyStatus;			//备用状态
+uint8_t onDutyStatus;			//值班状态
+uint8_t hepaAlarm;				//高效报警
+uint8_t unitFault;				//机组故障
+
 
 
 /*
@@ -163,7 +170,7 @@ void operatingMode()
 		displayFloatBlink(1, flash.humiSet);
 	}
 
-	if ((tempSetCount >= 10)&&(humiSetCount >= 10))			//不在温湿度设置状态才会写flash，防止频繁写flash
+	if ((tempSetCount >= 10)&&(humiSetCount >= 10))			//不在温湿度设置状态才会保存参数，防止频繁写flash
 	{
 		if (compareStruct(flashTemp, flash) == 0)
 		{

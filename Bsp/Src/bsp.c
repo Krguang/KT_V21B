@@ -2,14 +2,14 @@
 #include "modbus_slave.h"
 #include "controlCenter.h"
 
+uint8_t usart1_rx_buffer_temp[128];
 uint8_t usart1_rx_buffer[128];
-uint8_t usart1_tx_buffer[128];
-uint16_t usart1_tx_len = 0;
+uint16_t usart1_rx_len = 0;
 uint8_t usart1_rx_flag = 0;
 
+uint8_t usart2_rx_buffer_temp[128];
 uint8_t usart2_rx_buffer[128];
-uint8_t usart2_tx_buffer[128];
-uint16_t usart2_tx_len = 0;
+uint16_t usart2_rx_len = 0;
 uint8_t usart2_rx_flag = 0;
 
 volatile uint16_t ADC_ConvertedValue[3];
@@ -17,6 +17,21 @@ uint32_t ADC_Average[3];
 
 volatile uint8_t g_blinkFlag_500ms;
 
+
+/*
+*********************************************************************************************************
+*	函 数 名: BEBufToUint16
+*	功能说明: 将2字节数组(大端Big Endian次序，高字节在前)转换为16位整数
+*	形    参: _pBuf : 数组
+*	返 回 值: 16位整数值
+*
+*   大端(Big Endian)与小端(Little Endian)
+*********************************************************************************************************
+*/
+uint16_t BEBufToUint16(uint8_t *_pBuf)
+{
+	return (((uint16_t)_pBuf[0] << 8) | _pBuf[1]);
+}
 
 /*
 *********************************************************************************************************
@@ -76,6 +91,6 @@ void bsp_RunPer500ms(void)
 */
 void bsp_Idle(void)
 {
-	//modbus_Poll();	/* 从站 MODBUS函数 */
+	MODS_Poll();	/* 从站 MODBUS函数 */
 	modeSelect();
 }

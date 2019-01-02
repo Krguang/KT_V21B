@@ -360,6 +360,9 @@
     <ClCompile Include="..\Src\dataProcessing.c">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Bsp\Src\bsp_crc16.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Bsp\Inc\bsp_led_display.h">
@@ -382,6 +385,9 @@
     </ClInclude>
     <ClInclude Include="..\Inc\dataProcessing.h">
       <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Bsp\Inc\bsp_crc16.h">
+      <Filter>Header files\Inc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
