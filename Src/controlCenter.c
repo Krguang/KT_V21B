@@ -23,6 +23,8 @@ uint8_t onDutyStatus;			//值班状态
 uint8_t hepaAlarm;				//高效报警
 uint8_t unitFault;				//机组故障
 
+static uint8_t checkFlashCount;			//需要写入flash的数据的定时检查，每10秒检查一次是否需要写入。
+
 /*
 * 每500ms被调用一次
 */
@@ -30,6 +32,7 @@ void tempHumiSetCountTimeReference500ms()
 {
 	tempSetCount++;
 	humiSetCount++;
+	checkFlashCount++;
 }
 
 
@@ -180,10 +183,14 @@ void operatingMode()
 
 	if ((tempSetCount >= 10)&&(humiSetCount >= 10))			//不在温湿度设置状态才会保存参数，防止频繁写flash
 	{
-		if (compareStruct(flashTemp, flash) == 0)
+		if (checkFlashCount > 20)
 		{
-			flashTemp = flash;
-			STMFLASH_Write(FLASH_SAVE_ADDR, (uint16_t *)&flash.tempSet, 7);
+			checkFlashCount = 0;
+			if (compareStruct(flashTemp, flash) == 0)
+			{
+				flashTemp = flash;
+				STMFLASH_Write(FLASH_SAVE_ADDR, (uint16_t *)&flash.tempSet, 7);
+			}
 		}
 	}
 }

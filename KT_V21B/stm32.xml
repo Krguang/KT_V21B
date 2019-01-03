@@ -45,7 +45,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>..\KT_V21B.gpdsc</RelativePath>
-        <Timestamp>131909601096445952</Timestamp>
+        <Timestamp>131909610456265250</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>
@@ -250,7 +250,7 @@
                   <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
-                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_5.c</RelativePath>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
                   <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM3\port.c</RelativePath>

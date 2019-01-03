@@ -1,38 +1,38 @@
 #include "bsp.h"
+#include "cmsis_os.h"
+
+static inline void led_a_on() { HAL_GPIO_WritePin(digtal_led_a_GPIO_Port, digtal_led_a_Pin, GPIO_PIN_RESET); }
+static inline void led_b_on() { HAL_GPIO_WritePin(digtal_led_b_GPIO_Port, digtal_led_b_Pin, GPIO_PIN_RESET); }
+static inline void led_c_on() { HAL_GPIO_WritePin(digtal_led_c_GPIO_Port, digtal_led_c_Pin, GPIO_PIN_RESET); }
+static inline void led_d_on() { HAL_GPIO_WritePin(digtal_led_d_GPIO_Port, digtal_led_d_Pin, GPIO_PIN_RESET); }
+static inline void led_e_on() { HAL_GPIO_WritePin(digtal_led_e_GPIO_Port, digtal_led_e_Pin, GPIO_PIN_RESET); }
+static inline void led_f_on() { HAL_GPIO_WritePin(digtal_led_f_GPIO_Port, digtal_led_f_Pin, GPIO_PIN_RESET); }
+static inline void led_g_on() { HAL_GPIO_WritePin(digtal_led_g_GPIO_Port, digtal_led_g_Pin, GPIO_PIN_RESET); }
+static inline void led_dp_on() { HAL_GPIO_WritePin(digtal_led_dp_GPIO_Port, digtal_led_dp_Pin, GPIO_PIN_RESET); }
+
+static inline void led_1_on() { HAL_GPIO_WritePin(digtal_led_1_GPIO_Port, digtal_led_1_Pin, GPIO_PIN_RESET); }
+static inline void led_2_on() { HAL_GPIO_WritePin(digtal_led_2_GPIO_Port, digtal_led_2_Pin, GPIO_PIN_RESET); }
+static inline void led_3_on() { HAL_GPIO_WritePin(digtal_led_3_GPIO_Port, digtal_led_3_Pin, GPIO_PIN_RESET); }
+static inline void led_4_on() { HAL_GPIO_WritePin(digtal_led_4_GPIO_Port, digtal_led_4_Pin, GPIO_PIN_RESET); }
+static inline void led_5_on() { HAL_GPIO_WritePin(digtal_led_5_GPIO_Port, digtal_led_5_Pin, GPIO_PIN_RESET); }
+static inline void led_6_on() { HAL_GPIO_WritePin(digtal_led_6_GPIO_Port, digtal_led_6_Pin, GPIO_PIN_RESET); }
 
 
-static void led_a_on() { HAL_GPIO_WritePin(digtal_led_a_GPIO_Port, digtal_led_a_Pin, GPIO_PIN_RESET); }
-static void led_b_on() { HAL_GPIO_WritePin(digtal_led_b_GPIO_Port, digtal_led_b_Pin, GPIO_PIN_RESET); }
-static void led_c_on() { HAL_GPIO_WritePin(digtal_led_c_GPIO_Port, digtal_led_c_Pin, GPIO_PIN_RESET); }
-static void led_d_on() { HAL_GPIO_WritePin(digtal_led_d_GPIO_Port, digtal_led_d_Pin, GPIO_PIN_RESET); }
-static void led_e_on() { HAL_GPIO_WritePin(digtal_led_e_GPIO_Port, digtal_led_e_Pin, GPIO_PIN_RESET); }
-static void led_f_on() { HAL_GPIO_WritePin(digtal_led_f_GPIO_Port, digtal_led_f_Pin, GPIO_PIN_RESET); }
-static void led_g_on() { HAL_GPIO_WritePin(digtal_led_g_GPIO_Port, digtal_led_g_Pin, GPIO_PIN_RESET); }
-static void led_dp_on() { HAL_GPIO_WritePin(digtal_led_dp_GPIO_Port, digtal_led_dp_Pin, GPIO_PIN_RESET); }
+static inline void led_a_off() { HAL_GPIO_WritePin(digtal_led_a_GPIO_Port, digtal_led_a_Pin, GPIO_PIN_SET); }
+static inline void led_b_off() { HAL_GPIO_WritePin(digtal_led_b_GPIO_Port, digtal_led_b_Pin, GPIO_PIN_SET); }
+static inline void led_c_off() { HAL_GPIO_WritePin(digtal_led_c_GPIO_Port, digtal_led_c_Pin, GPIO_PIN_SET); }
+static inline void led_d_off() { HAL_GPIO_WritePin(digtal_led_d_GPIO_Port, digtal_led_d_Pin, GPIO_PIN_SET); }
+static inline void led_e_off() { HAL_GPIO_WritePin(digtal_led_e_GPIO_Port, digtal_led_e_Pin, GPIO_PIN_SET); }
+static inline void led_f_off() { HAL_GPIO_WritePin(digtal_led_f_GPIO_Port, digtal_led_f_Pin, GPIO_PIN_SET); }
+static inline void led_g_off() { HAL_GPIO_WritePin(digtal_led_g_GPIO_Port, digtal_led_g_Pin, GPIO_PIN_SET); }
+static inline void led_dp_off() { HAL_GPIO_WritePin(digtal_led_dp_GPIO_Port, digtal_led_dp_Pin, GPIO_PIN_SET); }
 
-static void led_1_on() { HAL_GPIO_WritePin(digtal_led_1_GPIO_Port, digtal_led_1_Pin, GPIO_PIN_RESET); }
-static void led_2_on() { HAL_GPIO_WritePin(digtal_led_2_GPIO_Port, digtal_led_2_Pin, GPIO_PIN_RESET); }
-static void led_3_on() { HAL_GPIO_WritePin(digtal_led_3_GPIO_Port, digtal_led_3_Pin, GPIO_PIN_RESET); }
-static void led_4_on() { HAL_GPIO_WritePin(digtal_led_4_GPIO_Port, digtal_led_4_Pin, GPIO_PIN_RESET); }
-static void led_5_on() { HAL_GPIO_WritePin(digtal_led_5_GPIO_Port, digtal_led_5_Pin, GPIO_PIN_RESET); }
-static void led_6_on() { HAL_GPIO_WritePin(digtal_led_6_GPIO_Port, digtal_led_6_Pin, GPIO_PIN_RESET); }
-
-
-static void led_a_off() { HAL_GPIO_WritePin(digtal_led_a_GPIO_Port, digtal_led_a_Pin, GPIO_PIN_SET); }
-static void led_b_off() { HAL_GPIO_WritePin(digtal_led_b_GPIO_Port, digtal_led_b_Pin, GPIO_PIN_SET); }
-static void led_c_off() { HAL_GPIO_WritePin(digtal_led_c_GPIO_Port, digtal_led_c_Pin, GPIO_PIN_SET); }
-static void led_d_off() { HAL_GPIO_WritePin(digtal_led_d_GPIO_Port, digtal_led_d_Pin, GPIO_PIN_SET); }
-static void led_e_off() { HAL_GPIO_WritePin(digtal_led_e_GPIO_Port, digtal_led_e_Pin, GPIO_PIN_SET); }
-static void led_f_off() { HAL_GPIO_WritePin(digtal_led_f_GPIO_Port, digtal_led_f_Pin, GPIO_PIN_SET); }
-static void led_g_off() { HAL_GPIO_WritePin(digtal_led_g_GPIO_Port, digtal_led_g_Pin, GPIO_PIN_SET); }
-static void led_dp_off() { HAL_GPIO_WritePin(digtal_led_dp_GPIO_Port, digtal_led_dp_Pin, GPIO_PIN_SET); }
-
-static void led_1_off() { HAL_GPIO_WritePin(digtal_led_1_GPIO_Port, digtal_led_1_Pin, GPIO_PIN_SET); }
-static void led_2_off() { HAL_GPIO_WritePin(digtal_led_2_GPIO_Port, digtal_led_2_Pin, GPIO_PIN_SET); }
-static void led_3_off() { HAL_GPIO_WritePin(digtal_led_3_GPIO_Port, digtal_led_3_Pin, GPIO_PIN_SET); }
-static void led_4_off() { HAL_GPIO_WritePin(digtal_led_4_GPIO_Port, digtal_led_4_Pin, GPIO_PIN_SET); }
-static void led_5_off() { HAL_GPIO_WritePin(digtal_led_5_GPIO_Port, digtal_led_5_Pin, GPIO_PIN_SET); }
-static void led_6_off() { HAL_GPIO_WritePin(digtal_led_6_GPIO_Port, digtal_led_6_Pin, GPIO_PIN_SET); }
+static inline void led_1_off() { HAL_GPIO_WritePin(digtal_led_1_GPIO_Port, digtal_led_1_Pin, GPIO_PIN_SET); }
+static inline void led_2_off() { HAL_GPIO_WritePin(digtal_led_2_GPIO_Port, digtal_led_2_Pin, GPIO_PIN_SET); }
+static inline void led_3_off() { HAL_GPIO_WritePin(digtal_led_3_GPIO_Port, digtal_led_3_Pin, GPIO_PIN_SET); }
+static inline void led_4_off() { HAL_GPIO_WritePin(digtal_led_4_GPIO_Port, digtal_led_4_Pin, GPIO_PIN_SET); }
+static inline void led_5_off() { HAL_GPIO_WritePin(digtal_led_5_GPIO_Port, digtal_led_5_Pin, GPIO_PIN_SET); }
+static inline void led_6_off() { HAL_GPIO_WritePin(digtal_led_6_GPIO_Port, digtal_led_6_Pin, GPIO_PIN_SET); }
 
 static uint8_t displayFlag;
 
@@ -123,7 +123,8 @@ static void pointDisplay(uint8_t num, uint8_t data) {
 	led_f_off();
 	led_g_off();
 	led_dp_on();
-	HAL_Delay(1);
+	//HAL_Delay(1);
+	osDelay(1);
 }
 
 
@@ -349,7 +350,8 @@ static void displayNumber(uint8_t num, uint8_t data) {
 	default:
 		break;
 	}
-	HAL_Delay(1);
+	//HAL_Delay(1);
+	osDelay(1);
 }
 
 /*

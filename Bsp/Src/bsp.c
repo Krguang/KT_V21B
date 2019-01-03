@@ -104,6 +104,4 @@ void bsp_RunPer500ms(void)
 */
 void bsp_Idle(void)
 {
-	MODS_Poll();	/* ´ÓÕ¾ MODBUSº¯Êý */
-	modeSelect();
 }

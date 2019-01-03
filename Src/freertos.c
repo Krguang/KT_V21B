@@ -57,6 +57,12 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */     
 
+#include "bsp.h"
+#include "modbus_slave.h"
+#include "controlCenter.h"
+
+#include "usart.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -157,7 +163,8 @@ void StartTaskModbusSlave(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(10);
+	MODS_Poll();	/* ´ÓÕ¾ MODBUSº¯Êý */
   }
   /* USER CODE END StartTaskModbusSlave */
 }
@@ -175,7 +182,7 @@ void StartTaskDisplay(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	modeSelect();
   }
   /* USER CODE END StartTaskDisplay */
 }
@@ -193,7 +200,7 @@ void StartTaskModbusMaster(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(100);
   }
   /* USER CODE END StartTaskModbusMaster */
 }
@@ -211,7 +218,7 @@ void StartTaskDataPrecess(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(100);
   }
   /* USER CODE END StartTaskDataPrecess */
 }

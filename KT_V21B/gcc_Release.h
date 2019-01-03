@@ -715,6 +715,9 @@
 #ifndef __FLT32_MANT_DIG__
 #define __FLT32_MANT_DIG__ 24
 #endif
+#ifndef USE_FREERTOS
+#define USE_FREERTOS 1
+#endif
 #ifndef __FLOAT_WORD_ORDER__
 #define __FLOAT_WORD_ORDER__ __ORDER_LITTLE_ENDIAN__
 #endif
@@ -1377,8 +1380,11 @@
 //..\Inc
 //..\Drivers\CMSIS\Device\ST\STM32F1xx\Include
 //..\Drivers\STM32F1xx_HAL_Driver\Inc
-//..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
 //..\Drivers\STM32F1xx_HAL_Driver\Src
+//..\Middlewares\Third_Party\FreeRTOS\Source\include
+//..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS
+//..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM3
+//..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
 // --- Include directories end --- //
 
 
