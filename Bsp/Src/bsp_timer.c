@@ -12,6 +12,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	static uint8_t count = 0;
 
+	if (htim->Instance == TIM4) {
+		HAL_IncTick();
+	}
+
 	if (htim == &htim6)
 	{
 		bsp_RunPer10ms();

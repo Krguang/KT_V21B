@@ -45,7 +45,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>..\KT_V21B.gpdsc</RelativePath>
-        <Timestamp>131909591652504897</Timestamp>
+        <Timestamp>131909601096445952</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>
@@ -108,34 +108,6 @@
               </Files>
             </VirtualDirectorySnapshot>
             <VirtualDirectorySnapshot>
-              <Name>RCC</Name>
-              <Files>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc_ex.c</RelativePath>
-                </VirtualFileSnapshot>
-              </Files>
-            </VirtualDirectorySnapshot>
-            <VirtualDirectorySnapshot>
-              <Name>CORTEX</Name>
-              <Files>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c</RelativePath>
-                </VirtualFileSnapshot>
-              </Files>
-            </VirtualDirectorySnapshot>
-            <VirtualDirectorySnapshot>
               <Name>DAC</Name>
               <Files>
                 <VirtualFileSnapshot>
@@ -153,23 +125,6 @@
               </Files>
             </VirtualDirectorySnapshot>
             <VirtualDirectorySnapshot>
-              <Name>TIM</Name>
-              <Files>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim_ex.c</RelativePath>
-                </VirtualFileSnapshot>
-              </Files>
-            </VirtualDirectorySnapshot>
-            <VirtualDirectorySnapshot>
               <Name>UART</Name>
               <Files>
                 <VirtualFileSnapshot>
@@ -177,20 +132,6 @@
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
                   <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_uart.c</RelativePath>
-                </VirtualFileSnapshot>
-              </Files>
-            </VirtualDirectorySnapshot>
-            <VirtualDirectorySnapshot>
-              <Name>DMA</Name>
-              <Files>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_dma.c</RelativePath>
                 </VirtualFileSnapshot>
               </Files>
             </VirtualDirectorySnapshot>
@@ -239,6 +180,145 @@
                 </VirtualFileSnapshot>
               </Files>
             </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
+              <Name>FREERTOS</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\croutine.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_prototypes.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\StackMacros.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\croutine.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\list.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\queue.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\tasks.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\timers.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_5.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM3\port.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM3\portmacro.h</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
+              <Name>RCC</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc_ex.c</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
+              <Name>CORTEX</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
+              <Name>TIM</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim_ex.c</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
+              <Name>DMA</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_dma.c</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
           </Subdirectories>
           <Files />
         </VirtualDirectorySnapshot>
@@ -255,6 +335,9 @@
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>..\Inc\dma.h</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
+          <RelativePath>..\Inc\FreeRTOSConfig.h</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>..\Inc\tim.h</RelativePath>
@@ -284,6 +367,9 @@
           <RelativePath>..\Src\dma.c</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
+          <RelativePath>..\Src\freertos.c</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
           <RelativePath>..\Src\tim.c</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
@@ -294,6 +380,9 @@
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>..\Src\stm32f1xx_hal_msp.c</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
+          <RelativePath>..\Src\stm32f1xx_hal_timebase_tim.c</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>..\Src\main.c</RelativePath>
@@ -307,12 +396,16 @@
             <string>C:\Users\K\Desktop\Stm32VS\KT_V21B\KT_V21B\..\Inc</string>
             <string>C:\Users\K\Desktop\Stm32VS\KT_V21B\KT_V21B\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include</string>
             <string>C:\Users\K\Desktop\Stm32VS\KT_V21B\KT_V21B\..\Drivers\STM32F1xx_HAL_Driver\Inc</string>
-            <string>C:\Users\K\Desktop\Stm32VS\KT_V21B\KT_V21B\..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy</string>
             <string>C:\Users\K\Desktop\Stm32VS\KT_V21B\KT_V21B\..\Drivers\STM32F1xx_HAL_Driver\Src</string>
+            <string>C:\Users\K\Desktop\Stm32VS\KT_V21B\KT_V21B\..\Middlewares\Third_Party\FreeRTOS\Source\include</string>
+            <string>C:\Users\K\Desktop\Stm32VS\KT_V21B\KT_V21B\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS</string>
+            <string>C:\Users\K\Desktop\Stm32VS\KT_V21B\KT_V21B\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM3</string>
+            <string>C:\Users\K\Desktop\Stm32VS\KT_V21B\KT_V21B\..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy</string>
           </IncludeDirectories>
           <PreprocessorMacros>
             <string>$$com.sysprogs.bspoptions.primary_memory$$_layout</string>
             <string>$$com.sysprogs.stm32.hal_device_family$$</string>
+            <string>USE_FREERTOS</string>
           </PreprocessorMacros>
           <GeneratePreprocessorOutput>false</GeneratePreprocessorOutput>
           <IsDebugConfiguration>false</IsDebugConfiguration>

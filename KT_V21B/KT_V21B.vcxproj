@@ -171,5 +171,33 @@
     <ClInclude Include="..\Bsp\Inc\bsp_led_display.h" />
     <ClInclude Include="..\Bsp\Inc\bsp_timer.h" />
     <ClInclude Include="..\Bsp\Inc\bsp_uart.h" />
+    <ClCompile Include="..\Src\freertos.c" />
+    <ClCompile Include="..\Src\stm32f1xx_hal_timebase_tim.c" />
+    <ClCompile Include="..\Middlewares\Third_Party\FreeRTOS\Source\croutine.c" />
+    <ClCompile Include="..\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c" />
+    <ClCompile Include="..\Middlewares\Third_Party\FreeRTOS\Source\list.c" />
+    <ClCompile Include="..\Middlewares\Third_Party\FreeRTOS\Source\queue.c" />
+    <ClCompile Include="..\Middlewares\Third_Party\FreeRTOS\Source\tasks.c" />
+    <ClCompile Include="..\Middlewares\Third_Party\FreeRTOS\Source\timers.c" />
+    <ClCompile Include="..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c" />
+    <ClCompile Include="..\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_5.c" />
+    <ClCompile Include="..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM3\port.c" />
+    <ClInclude Include="..\Inc\FreeRTOSConfig.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\croutine.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_prototypes.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\StackMacros.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h" />
+    <ClInclude Include="..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM3\portmacro.h" />
   </ItemGroup>
 </Project>

@@ -5,8 +5,8 @@
 BINARYDIR := Release
 
 #Additional flags
-PREPROCESSOR_MACROS := NDEBUG=1 RELEASE=1 flash_layout STM32F103xE
-INCLUDE_DIRS := ..\Inc ..\Drivers\CMSIS\Device\ST\STM32F1xx\Include ..\Drivers\STM32F1xx_HAL_Driver\Inc ..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy ..\Drivers\STM32F1xx_HAL_Driver\Src
+PREPROCESSOR_MACROS := NDEBUG=1 RELEASE=1 flash_layout STM32F103xE USE_FREERTOS
+INCLUDE_DIRS := ..\Inc ..\Drivers\CMSIS\Device\ST\STM32F1xx\Include ..\Drivers\STM32F1xx_HAL_Driver\Inc ..\Drivers\STM32F1xx_HAL_Driver\Src ..\Middlewares\Third_Party\FreeRTOS\Source\include ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS ..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM3 ..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
 LIBRARY_DIRS := 
 LIBRARY_NAMES := 
 ADDITIONAL_LINKER_INPUTS := 

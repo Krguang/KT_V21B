@@ -36,7 +36,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := ../Bsp/Src/bsp_adc.c ../Bsp/Src/bsp_cpu_flash.c ../Bsp/Src/bsp_crc16.c ../Bsp/Src/bsp_dac.c ../Bsp/Src/bsp_led.c ../Src/controlCenter.c ../Src/dataProcessing.c ../Src/gpio.c ../Src/adc.c ../Src/dac.c ../Src/dma.c ../Src/modbus_slave.c ../Src/usart.c ../Src/stm32f1xx_it.c ../Src/stm32f1xx_hal_msp.c ../Src/main.c ../Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/system_stm32f1xx.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac_ex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c $(BSP_ROOT)/STM32F1xxxx/StartupFiles/startup_stm32f103xe.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c ../Src/tim.c ../Bsp/Src/bsp.c ../Bsp/Src/bsp_key.c ../Bsp/Src/bsp_led_display.c ../Bsp/Src/bsp_timer.c ../Bsp/Src/bsp_uart.c
+SOURCEFILES := ../Bsp/Src/bsp_adc.c ../Bsp/Src/bsp_cpu_flash.c ../Bsp/Src/bsp_crc16.c ../Bsp/Src/bsp_dac.c ../Bsp/Src/bsp_led.c ../Src/controlCenter.c ../Src/dataProcessing.c ../Src/gpio.c ../Src/adc.c ../Src/dac.c ../Src/dma.c ../Src/modbus_slave.c ../Src/usart.c ../Src/stm32f1xx_it.c ../Src/stm32f1xx_hal_msp.c ../Src/main.c ../Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/system_stm32f1xx.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dac_ex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c $(BSP_ROOT)/STM32F1xxxx/StartupFiles/startup_stm32f103xe.c ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c ../Src/tim.c ../Bsp/Src/bsp.c ../Bsp/Src/bsp_key.c ../Bsp/Src/bsp_led_display.c ../Bsp/Src/bsp_timer.c ../Bsp/Src/bsp_uart.c ../Src/freertos.c ../Src/stm32f1xx_hal_timebase_tim.c ../Middlewares/Third_Party/FreeRTOS/Source/croutine.c ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c ../Middlewares/Third_Party/FreeRTOS/Source/list.c ../Middlewares/Third_Party/FreeRTOS/Source/queue.c ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c ../Middlewares/Third_Party/FreeRTOS/Source/timers.c ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.c ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -343,5 +343,49 @@ $(BINARYDIR)/bsp_timer.o : ../Bsp/Src/bsp_timer.c $(all_make_files) |$(BINARYDIR
 
 
 $(BINARYDIR)/bsp_uart.o : ../Bsp/Src/bsp_uart.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/freertos.o : ../Src/freertos.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/stm32f1xx_hal_timebase_tim.o : ../Src/stm32f1xx_hal_timebase_tim.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/croutine.o : ../Middlewares/Third_Party/FreeRTOS/Source/croutine.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/event_groups.o : ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/list.o : ../Middlewares/Third_Party/FreeRTOS/Source/list.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/queue.o : ../Middlewares/Third_Party/FreeRTOS/Source/queue.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/tasks.o : ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/timers.o : ../Middlewares/Third_Party/FreeRTOS/Source/timers.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/cmsis_os.o : ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/heap_5.o : ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_5.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/port.o : ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
