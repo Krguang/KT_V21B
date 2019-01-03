@@ -1,6 +1,8 @@
 #include "bsp.h"
 #include "main.h"
 #include "modbus_slave.h"
+#include "controlCenter.h"
+#include "usart.h"
 
 
 static void MODS_SendWithCRC(uint8_t *_pBuf, uint8_t _ucLen);
@@ -52,7 +54,7 @@ void MODS_Poll(void)
 
 		/* 站地址 (1字节） */
 		addr = usart1_rx_buffer[0];				/* 第1字节 站号 */
-		if (addr != 1)		 			/* 判断主机发送的命令地址是否符合 */
+		if (addr != flash.h2Set)		 			/* 判断主机发送的命令地址是否符合 */
 		{
 			goto err_ret;
 		}
@@ -84,6 +86,7 @@ static void MODS_SendWithCRC(uint8_t *_pBuf, uint8_t _ucLen)
 	buf[_ucLen++] = crc >> 8;
 	buf[_ucLen++] = crc;
 	usart1_dma_send(buf, _ucLen);
+	//HAL_UART_Transmit(&huart1, buf, _ucLen,0xff);
 }
 
 

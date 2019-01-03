@@ -2,6 +2,8 @@
 #include "modbus_slave.h"
 #include "controlCenter.h"
 
+#include "usart.h"
+
 uint8_t usart1_rx_buffer_temp[128];
 uint8_t usart1_rx_buffer[128];
 uint16_t usart1_rx_len = 0;
@@ -16,6 +18,8 @@ volatile uint16_t ADC_ConvertedValue[3];
 uint32_t ADC_Average[3];
 
 volatile uint8_t g_blinkFlag_500ms;
+
+uint8_t a[16];
 
 
 /*
@@ -49,6 +53,11 @@ void bsp_Init(void)
 	bsp_InitUart(); 	/* 初始化串口 */
 	bsp_InitADC();		/* 初始化adc */
 	bsp_InitDAC();		/* 初始化dac */
+
+	//for (size_t i = 0; i < 16; i++)
+	//{
+	//	a[i] = i;
+	//}
 }
 
 /*
@@ -63,6 +72,7 @@ void bsp_Init(void)
 void bsp_RunPer10ms(void)
 {
 	bsp_KeyScan();		/* 按键扫描 */
+	ledTimeReference10ms();	//指示灯闪烁
 }
 
 /*
@@ -75,9 +85,12 @@ void bsp_RunPer10ms(void)
 */
 void bsp_RunPer500ms(void)
 {
-	g_blinkFlag_500ms = g_blinkFlag_500ms ^ 1;
-	tempSetCount++;
-	humiSetCount++;
+	displayTimeReference500ms();
+	tempHumiSetCountTimeReference500ms();
+
+//	usart1_dma_send(a, 16);
+	//HAL_UART_Transmit(&huart1, a, 16, 0xff);
+	//HAL_UART_Transmit_DMA(&huart1, a, 16);
 }
 
 /*
@@ -92,5 +105,5 @@ void bsp_RunPer500ms(void)
 void bsp_Idle(void)
 {
 	MODS_Poll();	/* 从站 MODBUS函数 */
-	modeSelect();
+	//modeSelect();
 }

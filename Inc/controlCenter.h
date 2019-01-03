@@ -16,10 +16,9 @@ typedef struct
 
 extern FlashVar flash;
 extern FlashVar flashTemp;
-extern uint32_t tempSetCount;		//温度设定计时
-extern uint32_t humiSetCount;		//湿度设定计时
 
 void paramInFlashInit(void);
 void modeSelect(void);
+void tempHumiSetCountTimeReference500ms(void);
 
 #endif // !__CONTROLCENTER

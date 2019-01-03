@@ -14,8 +14,8 @@ uint16_t humiValue;				//湿度实时值
 
 uint8_t ucKeyCode;				//按键代码
 
-uint32_t tempSetCount = 10;		//温度设定计时
-uint32_t humiSetCount = 10;		//湿度设定计时
+static uint32_t tempSetCount = 10;		//温度设定计时
+static uint32_t humiSetCount = 10;		//湿度设定计时
 
 uint8_t fanStatus;				//风机状态
 uint8_t standbyStatus;			//备用状态
@@ -23,6 +23,14 @@ uint8_t onDutyStatus;			//值班状态
 uint8_t hepaAlarm;				//高效报警
 uint8_t unitFault;				//机组故障
 
+/*
+* 每500ms被调用一次
+*/
+void tempHumiSetCountTimeReference500ms()
+{
+	tempSetCount++;
+	humiSetCount++;
+}
 
 
 /*

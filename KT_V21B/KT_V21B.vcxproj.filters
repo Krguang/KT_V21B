@@ -363,6 +363,9 @@
     <ClCompile Include="..\Bsp\Src\bsp_crc16.c">
       <Filter>Source files\Src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Bsp\Src\bsp_led.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Bsp\Inc\bsp_led_display.h">
@@ -387,6 +390,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="..\Bsp\Inc\bsp_crc16.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Bsp\Inc\bsp_led.h">
       <Filter>Header files\Inc</Filter>
     </ClInclude>
   </ItemGroup>

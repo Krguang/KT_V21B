@@ -10,6 +10,7 @@
 #include "bsp_dac.h"
 #include "bsp_cpu_flash.h"
 #include "bsp_crc16.h"
+#include "bsp_led.h"
 
 #include <stdio.h>
 #include <string.h>

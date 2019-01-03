@@ -34,6 +34,13 @@ static void led_4_off() { HAL_GPIO_WritePin(digtal_led_4_GPIO_Port, digtal_led_4
 static void led_5_off() { HAL_GPIO_WritePin(digtal_led_5_GPIO_Port, digtal_led_5_Pin, GPIO_PIN_SET); }
 static void led_6_off() { HAL_GPIO_WritePin(digtal_led_6_GPIO_Port, digtal_led_6_Pin, GPIO_PIN_SET); }
 
+static uint8_t displayFlag;
+
+void displayTimeReference500ms()
+{
+	displayFlag ^= 1;
+}
+
 
 static uint8_t* floatToChar(uint16_t data) {
 	static uint8_t floatTemp[5];
@@ -423,8 +430,6 @@ void displayFloatBlink(uint8_t leftrOrRight, uint16_t data)
 
 	uint8_t *p = floatToChar(data);
 	uint8_t i;
-
-	uint8_t displayFlag = g_blinkFlag_500ms;
 
 	if (leftrOrRight)
 	{
