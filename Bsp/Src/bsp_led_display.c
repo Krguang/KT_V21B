@@ -82,14 +82,14 @@ data 1:显示小数点  0：不显示小数点
 */
 static void pointDisplay(uint8_t num, uint8_t data) {
 
-	led_a_off();
-	led_b_off();
-	led_c_off();
-	led_d_off();
-	led_e_off();
-	led_f_off();
-	led_g_off();
-	led_dp_off();
+	//led_a_off();
+	//led_b_off();
+	//led_c_off();
+	//led_d_off();
+	//led_e_off();
+	//led_f_off();
+	//led_g_off();
+	//led_dp_off();
 
 	switch (num)
 	{
@@ -115,16 +115,9 @@ static void pointDisplay(uint8_t num, uint8_t data) {
 		break;
 	}
 
-	led_a_off();
-	led_b_off();
-	led_c_off();
-	led_d_off();
-	led_e_off();
-	led_f_off();
-	led_g_off();
 	led_dp_on();
-	//HAL_Delay(1);
 	osDelay(1);
+	led_dp_off();
 }
 
 
@@ -133,22 +126,6 @@ num : 1-6 对应 1-6数码管
 data : 要显示的数值
 */
 static void displayNumber(uint8_t num, uint8_t data) {
-
-	led_a_off();
-	led_b_off();
-	led_c_off();
-	led_d_off();
-	led_e_off();
-	led_f_off();
-	led_g_off();
-	led_dp_off();
-
-	led_1_off();
-	led_2_off();
-	led_3_off();
-	led_4_off();
-	led_5_off();
-	led_6_off();
 
 	switch (num)
 	{
@@ -352,6 +329,15 @@ static void displayNumber(uint8_t num, uint8_t data) {
 	}
 	//HAL_Delay(1);
 	osDelay(1);
+
+	led_a_off();
+	led_b_off();
+	led_c_off();
+	led_d_off();
+	led_e_off();
+	led_f_off();
+	led_g_off();
+	led_dp_off();
 }
 
 /*
@@ -385,7 +371,7 @@ void displayString(uint8_t leftrOrRight,char * string)
 		p++;
 	}
 }
-			
+
 /*
 * eftrOrRight : 选择显示在左侧还是右侧 0：左侧，1：右侧
 * data : 要显示的整形

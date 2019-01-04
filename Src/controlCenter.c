@@ -113,6 +113,8 @@ void paramInFlashInit()
 	{
 		STMFLASH_Write(FLASH_SAVE_ADDR, (uint16_t *)&flash.tempSet, 7);
 	}
+
+	flashTemp = flash;
 }
 
 /*

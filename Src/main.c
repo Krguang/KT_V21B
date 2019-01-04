@@ -128,13 +128,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
   bsp_Init();
   paramInFlashInit();
-
-  uint8_t a[16];
-  for (size_t i = 0; i < 16; i++)
-  {
-	  a[i] = i;
-  }
-
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
@@ -153,12 +146,6 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	//  bsp_Idle();
-
-
-
-	 // HAL_UART_Transmit_DMA(&huart1, a, 16);
-	//  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
