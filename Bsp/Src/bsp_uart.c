@@ -1,14 +1,45 @@
 #include "bsp.h"
 #include "usart.h"
 
+
+static uint32_t baudRate;
+
 int _write(int fd, char *pBuffer, int size)
 {
 	HAL_UART_Transmit(&huart2, pBuffer, size, 0xff);
 	return size;
 }
 
+static void USART1_UART_Init()
+{
+
+	if (HAL_GPIO_ReadPin(baud_set_GPIO_Port,baud_set_Pin) == 0)
+	{
+		baudRate = 19200;
+	}
+	else
+	{
+		baudRate = 4800;
+	}
+
+	huart1.Instance = USART1;
+	huart1.Init.BaudRate = baudRate;
+	huart1.Init.WordLength = UART_WORDLENGTH_8B;
+	huart1.Init.StopBits = UART_STOPBITS_1;
+	huart1.Init.Parity = UART_PARITY_NONE;
+	huart1.Init.Mode = UART_MODE_TX_RX;
+	huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+	huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+	if (HAL_UART_Init(&huart1) != HAL_OK)
+	{
+		Error_Handler();
+	}
+}
+
 void bsp_InitUart(void)
 {
+	USART1_UART_Init();
+
 	__HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);    //使能空闲中断
 	__HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);    //使能空闲中断
 

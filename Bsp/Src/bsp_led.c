@@ -10,12 +10,11 @@ static uint16_t beep_count;
 static uint8_t beep_flag;
 
 /*
-* 此函数被10ms轮询调用，位led闪烁提供时基准
+* 此函数被10ms轮询调用，为led闪烁提供时基准
 */
 void ledTimeReference10ms()
 {
-	
-	if (led_usart1_close_count < 1000)
+	if (led_usart1_close_count < 300)
 	{
 		led_usart1_close_count++;
 	}
@@ -24,7 +23,7 @@ void ledTimeReference10ms()
 		HAL_GPIO_WritePin(led_uart1_state_GPIO_Port, led_uart1_state_Pin, GPIO_PIN_SET);
 	}
 
-	if (led_usart2_close_count < 1000)
+	if (led_usart2_close_count < 300)
 	{
 		led_usart2_close_count++;
 	}
