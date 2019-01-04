@@ -4,7 +4,7 @@
 #include "main.h"
 
 #define FLASH_SAVE_ADDR  0X08030000		//设置FLASH 保存地址(必须为偶数，且其值要大于本代码所占用FLASH的大小+0X08000000)
-#define LOCAL_ARRAY_LENGTH 128
+#define LOCAL_ARRAY_LENGTH 256
 
 typedef struct
 {

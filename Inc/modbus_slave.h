@@ -15,8 +15,8 @@
 #define RSP_ERR_VALUE		0x03	/* 数据值域错误 */
 #define RSP_ERR_WRITE		0x04	/* 写入失败 */
 
-#define S_RX_BUF_SIZE		128
-#define S_TX_BUF_SIZE		128
+#define S_RX_BUF_SIZE		256
+#define S_TX_BUF_SIZE		256
 
 
 typedef struct

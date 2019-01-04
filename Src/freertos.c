@@ -214,10 +214,21 @@ void StartTaskModbusMaster(void const * argument)
 void StartTaskDataPrecess(void const * argument)
 {
 	/* USER CODE BEGIN StartTaskDataPrecess */
+	static uint8_t count = 0;
+
 	/* Infinite loop */
 	for (;;)
 	{
-		osDelay(100);
+		bsp_RunPer10ms();
+
+		count++;
+
+		if (count > 50)
+		{
+			count = 0;
+			bsp_RunPer500ms();
+		}
+		osDelay(10);
 	}
 	/* USER CODE END StartTaskDataPrecess */
 }

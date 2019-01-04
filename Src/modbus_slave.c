@@ -130,66 +130,6 @@ static void MODS_SendAckOk(void)
 }
 
 
-/*
-*********************************************************************************************************
-*	函 数 名: MODS_ReadRegValue
-*	功能说明: 读取保持寄存器的值
-*	形    参: reg_addr 寄存器地址
-*			  reg_value 存放寄存器结果
-*	返 回 值: 1表示OK 0表示错误
-*********************************************************************************************************
-*/
-static uint8_t MODS_ReadRegValue(uint16_t reg_addr, uint8_t *reg_value)
-{
-	uint16_t value;
-
-	switch (reg_addr)									/* 判断寄存器地址 */
-	{
-	case SLAVE_REG_P01:
-		value = g_tVar.P01;
-		break;
-
-	case SLAVE_REG_P02:
-		value = g_tVar.P02;							/* 将寄存器值读出 */
-		break;
-
-	default:
-		return 0;									/* 参数异常，返回 0 */
-	}
-
-	reg_value[0] = value >> 8;
-	reg_value[1] = value;
-
-	return 1;											/* 读取成功 */
-}
-
-/*
-*********************************************************************************************************
-*	函 数 名: MODS_WriteRegValue
-*	功能说明: 读取保持寄存器的值
-*	形    参: reg_addr 寄存器地址
-*			  reg_value 寄存器值
-*	返 回 值: 1表示OK 0表示错误
-*********************************************************************************************************
-*/
-static uint8_t MODS_WriteRegValue(uint16_t reg_addr, uint16_t reg_value)
-{
-	switch (reg_addr)							/* 判断寄存器地址 */
-	{
-	case SLAVE_REG_P01:
-		g_tVar.P01 = reg_value;				/* 将值写入保存寄存器 */
-		break;
-
-	case SLAVE_REG_P02:
-		g_tVar.P02 = reg_value;				/* 将值写入保存寄存器 */
-		break;
-
-	default:
-		return 0;		/* 参数异常，返回 0 */
-	}
-
-	return 1;		/* 读取成功 */
-}
 
 /*
 *********************************************************************************************************

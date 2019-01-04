@@ -210,8 +210,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
 
-	static uint8_t count = 0;
-
   /* USER CODE END Callback 0 */
   if (htim->Instance == TIM4) {
     HAL_IncTick();
@@ -220,15 +218,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
   if (htim == &htim6)
   {
-	  bsp_RunPer10ms();
 
-	  count++;
-
-	  if (count > 50)
-	  {
-		  count = 0;
-		  bsp_RunPer500ms();
-	  }
   }
   /* USER CODE END Callback 1 */
 }

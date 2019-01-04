@@ -34,6 +34,7 @@ static uint8_t checkFanSwitchCount;
 static uint8_t checkstandbySwitchCount;
 static uint8_t checkOnDutySwitchCount;
 
+static void flashParamCheck();
 
 /*
 * 每500ms被调用一次
@@ -46,6 +47,7 @@ void tempHumiSetCountTimeReference500ms()
 	if (checkFanSwitchCount < 255) checkFanSwitchCount++;
 	if (checkstandbySwitchCount < 255) checkstandbySwitchCount++;
 	if (checkOnDutySwitchCount < 255) checkOnDutySwitchCount++;
+	flashParamCheck();
 }
 
 
@@ -364,7 +366,13 @@ void operatingMode()
 		displayFloatBlink(1, humiKeyChangeTemp);
 	}
 
-	if ((tempSetCount >= 10)&&(humiSetCount >= 10))			//不在温湿度设置状态才会保存参数，防止频繁写flash
+	operateProcessing();
+}
+
+
+static void flashParamCheck()
+{
+	if ((tempSetCount >= 10) && (humiSetCount >= 10))			//不在温湿度设置状态才会保存参数，防止频繁写flash
 	{
 		flash.tempSet = tempKeyChangeTemp;
 		flash.humiSet = humiKeyChangeTemp;
@@ -379,10 +387,7 @@ void operatingMode()
 			}
 		}
 	}
-
-	operateProcessing();
 }
-
 
 /*
 *
