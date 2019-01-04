@@ -17,7 +17,6 @@ static void MODS_10H(void);
 
 
 MODS_T g_tModS;
-VAR_T g_tVar;
 
 /*
 *********************************************************************************************************
@@ -166,7 +165,7 @@ static void MODS_AnalyzeApp(void)
 		break;
 
 	case 0x06:							/* 写单个保存寄存器（此例程改写g_tVar中的参数）*/
-		MODS_06H();
+	//	MODS_06H();
 		//bsp_PutMsg(MSG_MODS_06H, 0);
 		break;
 
