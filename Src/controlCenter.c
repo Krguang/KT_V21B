@@ -2,20 +2,19 @@
 #include "main.h"
 #include "controlCenter.h"
 
-#define FLASH_SAVE_ADDR  0X08030000		//设置FLASH 保存地址(必须为偶数，且其值要大于本代码所占用FLASH的大小+0X08000000)
-
 FlashVar flash;					//存储在flash中的结构体
 FlashVar flashTemp;				//用于判断flash结构体是否变化的缓存
 
-uint8_t displayMode;			//显示模式 0：显示温湿度，1：显示设置界面；
+uint16_t localArray[LOCAL_ARRAY_LENGTH];	//存储所有数据的数组，用于modbus通讯
 
 uint16_t tempValue;				//温度实时值
 uint16_t humiValue;				//湿度实时值
 
-uint8_t ucKeyCode;				//按键代码
+uint8_t fanSwitch;				//风机启停开关
+uint8_t standbySwitch;			//备用开关
+uint8_t onDutySwitch;			//值班开关
+uint8_t alarmSwitch;			//消音开关
 
-static uint32_t tempSetCount = 10;		//温度设定计时
-static uint32_t humiSetCount = 10;		//湿度设定计时
 
 uint8_t fanStatus;				//风机状态
 uint8_t standbyStatus;			//备用状态
@@ -23,7 +22,15 @@ uint8_t onDutyStatus;			//值班状态
 uint8_t hepaAlarm;				//高效报警
 uint8_t unitFault;				//机组故障
 
+
+static uint8_t displayMode;			//显示模式 0：显示温湿度，1：显示设置界面；
+static uint8_t ucKeyCode;				//按键代码
+static uint32_t tempSetCount = 10;		//温度设定计时
+static uint32_t humiSetCount = 10;		//湿度设定计时
 static uint8_t checkFlashCount;			//需要写入flash的数据的定时检查，每10秒检查一次是否需要写入。
+static uint8_t checkFanSwitchCount;
+static uint8_t checkstandbySwitchCount;
+static uint8_t checkOnDutySwitchCount;
 
 /*
 * 每500ms被调用一次
@@ -32,7 +39,10 @@ void tempHumiSetCountTimeReference500ms()
 {
 	tempSetCount++;
 	humiSetCount++;
-	checkFlashCount++;
+	if (checkFlashCount < 255) checkFlashCount++;
+	if (checkFanSwitchCount < 255) checkFanSwitchCount++;
+	if (checkstandbySwitchCount < 255) checkstandbySwitchCount++;
+	if (checkOnDutySwitchCount < 255) checkOnDutySwitchCount++;
 }
 
 
@@ -118,6 +128,175 @@ void paramInFlashInit()
 }
 
 /*
+* 对外部操作处理
+*/
+static void operateProcessing()
+{
+
+	if (flash.h1Set == 2)	//脉冲按键
+	{
+		if (ucKeyCode != KEY_NONE)
+		{
+
+			if (ucKeyCode == KEY_1_DOWN)
+			{
+				fanSwitch = 1;
+				checkFanSwitchCount = 0;
+			}
+
+			if (ucKeyCode == KEY_2_DOWN)
+			{
+				standbySwitch = 1;
+				checkstandbySwitchCount = 0;
+			}
+
+			if (ucKeyCode == KEY_3_DOWN)
+			{
+				onDutySwitch = 1;
+				checkOnDutySwitchCount = 0;
+			}
+		}
+
+		if (checkFanSwitchCount > 10)
+		{
+			fanSwitch = 0;
+		}
+
+		if (checkstandbySwitchCount > 10)
+		{
+			standbySwitch = 0;
+		}
+
+		if (checkOnDutySwitchCount > 10)
+		{
+			onDutySwitch = 0;
+		}
+
+	}
+	else					//电平翻转按键
+	{
+		if (ucKeyCode != KEY_NONE)
+		{
+			if (ucKeyCode == KEY_1_DOWN)
+			{
+				fanSwitch ^= 1;
+			}
+
+			if (ucKeyCode == KEY_2_DOWN)
+			{
+				standbySwitch ^= 1;
+			}
+
+			if (ucKeyCode == KEY_3_DOWN)
+			{
+				onDutySwitch ^= 1;
+			}
+		}
+	}
+
+	if (ucKeyCode == KEY_4_DOWN)
+	{
+		alarmSwitch ^= 1;
+	}
+
+
+
+	if (fanSwitch == 1)
+	{
+		key1_led_open();
+	}
+	else 
+	{
+		key1_led_close();
+	}
+
+	if (standbySwitch == 1)
+	{
+		key2_led_open();
+	}
+	else
+	{
+		key2_led_close();
+	}
+
+	if (onDutySwitch == 1)
+	{
+		key3_led_open();
+	}
+	else
+	{
+		key3_led_close();
+	}
+
+	if (alarmSwitch == 1)
+	{
+		key4_led_open();
+	}
+	else
+	{
+		key4_led_close();
+	}
+
+	if (fanStatus == 1)
+	{
+		led1_open();
+	}
+	else 
+	{
+		led1_close();
+	}
+
+	if (standbyStatus == 1)
+	{
+		led2_open();
+	}
+	else
+	{
+		led2_close();
+	}
+
+	if (onDutyStatus == 1)
+	{
+		led3_open();
+	}
+	else
+	{
+		led3_close();
+	}
+
+	if (hepaAlarm == 1)
+	{
+		led4_blink();
+	}
+	else
+	{
+		led4_close();
+	}
+
+	if (unitFault == 1)
+	{
+		led5_blink();
+	}
+	else
+	{
+		led5_close();
+	}
+
+	if (alarmSwitch == 0)
+	{
+		if (hepaAlarm || unitFault)
+		{
+			beep_open();
+		}
+	}
+	else
+	{
+		beep_close();
+	}
+}
+
+
+/*
 *
 * 工作模式
 */
@@ -195,6 +374,8 @@ void operatingMode()
 			}
 		}
 	}
+
+	operateProcessing();
 }
 
 

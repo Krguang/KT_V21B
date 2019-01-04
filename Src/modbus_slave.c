@@ -3,7 +3,7 @@
 #include "modbus_slave.h"
 #include "controlCenter.h"
 #include "usart.h"
-
+#include "dataProcessing.h"
 
 static void MODS_SendWithCRC(uint8_t *_pBuf, uint8_t _ucLen);
 static void MODS_SendAckOk(void);
@@ -18,8 +18,6 @@ static void MODS_10H(void);
 
 MODS_T g_tModS;
 VAR_T g_tVar;
-
-uint16_t localArray[256];
 
 /*
 *********************************************************************************************************
@@ -296,12 +294,9 @@ static void MODS_03H(void)
 	uint16_t reg;
 	uint16_t num;
 	uint16_t i;
-	uint8_t reg_value[64];
+	//uint8_t reg_value[64];
 	uint8_t temp[8];
-	for (size_t i = 0; i < 64; i++)
-	{
-		reg_value[i] = i;
-	}
+	uint16_t LocalStatusArrayTemp;
 
 	g_tModS.RspCode = RSP_OK;
 
@@ -313,20 +308,10 @@ static void MODS_03H(void)
 
 	reg = BEBufToUint16(&g_tModS.RxBuf[2]); 				/* 寄存器号 */
 	num = BEBufToUint16(&g_tModS.RxBuf[4]);					/* 寄存器个数 */
-	if (num > sizeof(reg_value) / 2)
+	if (num > LOCAL_ARRAY_LENGTH)
 	{
 		g_tModS.RspCode = RSP_ERR_VALUE;					/* 数据值域错误 */
 		goto err_ret;
-	}
-
-	for (i = 0; i < num; i++)
-	{
-		//if (MODS_ReadRegValue(reg, &reg_value[2 * i]) == 0)	/* 读出寄存器值放入reg_value */
-		//{
-		//	g_tModS.RspCode = RSP_ERR_REG_ADDR;				/* 寄存器地址错误 */
-		//	break;
-		//}
-		//reg++;
 	}
 
 err_ret:
@@ -339,10 +324,13 @@ err_ret:
 
 		for (i = 0; i < num; i++)
 		{
-			g_tModS.TxBuf[g_tModS.TxCount++] = reg_value[2 * i];
-			g_tModS.TxBuf[g_tModS.TxCount++] = reg_value[2 * i + 1];
+			LocalStatusArrayTemp = localArray[reg + i];	//读取的是16位数组，转换为2个8位数据存入发送数组
+			g_tModS.TxBuf[g_tModS.TxCount++] = LocalStatusArrayTemp >> 8;
+			g_tModS.TxBuf[g_tModS.TxCount++] = LocalStatusArrayTemp & 0xff;
 		}
 		MODS_SendWithCRC(g_tModS.TxBuf, g_tModS.TxCount);	/* 发送正确应答 */
+		usart1_led_toggle();
+		modbusSlave03DataProcess();
 	}
 	else
 	{
@@ -416,15 +404,6 @@ static void MODS_06H(void)
 
 	reg = BEBufToUint16(&g_tModS.RxBuf[2]); 	/* 寄存器号 */
 	value = BEBufToUint16(&g_tModS.RxBuf[4]);	/* 寄存器值 */
-
-	if (MODS_WriteRegValue(reg, value) == 1)	/* 该函数会把写入的值存入寄存器 */
-	{
-		;
-	}
-	else
-	{
-		g_tModS.RspCode = RSP_ERR_REG_ADDR;		/* 寄存器地址错误 */
-	}
 
 err_ret:
 	if (g_tModS.RspCode == RSP_OK)				/* 正确应答 */
@@ -508,22 +487,23 @@ static void MODS_10H(void)
 	for (i = 0; i < reg_num; i++)
 	{
 		value = BEBufToUint16(&g_tModS.RxBuf[7 + 2 * i]);	/* 寄存器值 */
-
-		if (MODS_WriteRegValue(reg_addr + i, value) == 1)
-		{
-			;
-		}
-		else
-		{
-			g_tModS.RspCode = RSP_ERR_REG_ADDR;		/* 寄存器地址错误 */
-			break;
-		}
+		localArray[reg_addr + i] = value;
+		//if (MODS_WriteRegValue(reg_addr + i, value) == 1)
+		//{
+		//	;
+		//}
+		//else
+		//{
+		//	g_tModS.RspCode = RSP_ERR_REG_ADDR;		/* 寄存器地址错误 */
+		//	break;
+		//}
 	}
 
 err_ret:
 	if (g_tModS.RspCode == RSP_OK)					/* 正确应答 */
 	{
 		MODS_SendAckOk();
+		modbusSlave10DataProcess();
 	}
 	else
 	{
