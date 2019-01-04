@@ -10,6 +10,9 @@ uint16_t localArray[LOCAL_ARRAY_LENGTH];	//´æ´¢ËùÓÐÊý¾ÝµÄÊý×é£¬ÓÃÓÚmodbusÍ¨Ñ¶
 uint16_t tempValue;				//ÎÂ¶ÈÊµÊ±Öµ
 uint16_t humiValue;				//Êª¶ÈÊµÊ±Öµ
 
+uint16_t tempKeyChangeTemp;
+uint16_t humiKeyChangeTemp;
+
 uint8_t fanSwitch;				//·ç»úÆôÍ£¿ª¹Ø
 uint8_t standbySwitch;			//±¸ÓÃ¿ª¹Ø
 uint8_t onDutySwitch;			//Öµ°à¿ª¹Ø
@@ -22,7 +25,6 @@ uint8_t onDutyStatus;			//Öµ°à×´Ì¬
 uint8_t hepaAlarm;				//¸ßÐ§±¨¾¯
 uint8_t unitFault;				//»ú×é¹ÊÕÏ
 
-
 static uint8_t displayMode;			//ÏÔÊ¾Ä£Ê½ 0£ºÏÔÊ¾ÎÂÊª¶È£¬1£ºÏÔÊ¾ÉèÖÃ½çÃæ£»
 static uint8_t ucKeyCode;				//°´¼ü´úÂë
 static uint32_t tempSetCount = 10;		//ÎÂ¶ÈÉè¶¨¼ÆÊ±
@@ -31,6 +33,7 @@ static uint8_t checkFlashCount;			//ÐèÒªÐ´ÈëflashµÄÊý¾ÝµÄ¶¨Ê±¼ì²é£¬Ã¿10Ãë¼ì²éÒ»´
 static uint8_t checkFanSwitchCount;
 static uint8_t checkstandbySwitchCount;
 static uint8_t checkOnDutySwitchCount;
+
 
 /*
 * Ã¿500ms±»µ÷ÓÃÒ»´Î
@@ -125,6 +128,8 @@ void paramInFlashInit()
 	}
 
 	flashTemp = flash;
+	tempKeyChangeTemp = flash.tempSet;
+	humiKeyChangeTemp = flash.humiSet;
 }
 
 /*
@@ -198,8 +203,6 @@ static void operateProcessing()
 	{
 		alarmSwitch ^= 1;
 	}
-
-
 
 	if (fanSwitch == 1)
 	{
@@ -302,16 +305,15 @@ static void operateProcessing()
 */
 void operatingMode()
 {
-
 	if (ucKeyCode != KEY_NONE)
 	{
 		if (ucKeyCode == KEY_5_DOWN)
 		{
 			tempSetCount = 0;
-
-			if (flash.tempSet > flash.h5Set)
+			
+			if (tempKeyChangeTemp > flash.h5Set)
 			{
-				flash.tempSet --;
+				tempKeyChangeTemp--;
 			}
 		}
 
@@ -319,27 +321,27 @@ void operatingMode()
 		{
 			tempSetCount = 0;
 
-			if (flash.tempSet < flash.h4Set)
+			if (tempKeyChangeTemp < flash.h4Set)
 			{
-				flash.tempSet ++;
+				tempKeyChangeTemp++;
 			}
 		}
 	
 		if (ucKeyCode == KEY_7_DOWN)
 		{
 			humiSetCount = 0;
-			if (flash.humiSet > 0)
+			if (humiKeyChangeTemp > 0)
 			{
-				flash.humiSet -= 10;
+				humiKeyChangeTemp -= 10;
 			}
 		}
 
 		if (ucKeyCode == KEY_8_DOWN)
 		{
 			humiSetCount = 0;
-			if (flash.humiSet < 1000)
+			if (humiKeyChangeTemp < 1000)
 			{
-				flash.humiSet += 10;
+				humiKeyChangeTemp += 10;
 			}
 		}
 	}
@@ -350,7 +352,7 @@ void operatingMode()
 	}
 	else
 	{
-		displayFloatBlink(0, flash.tempSet);
+		displayFloatBlink(0, tempKeyChangeTemp);
 	}
 
 	if (humiSetCount >= 10)
@@ -359,11 +361,14 @@ void operatingMode()
 	}
 	else 
 	{
-		displayFloatBlink(1, flash.humiSet);
+		displayFloatBlink(1, humiKeyChangeTemp);
 	}
 
 	if ((tempSetCount >= 10)&&(humiSetCount >= 10))			//²»ÔÚÎÂÊª¶ÈÉèÖÃ×´Ì¬²Å»á±£´æ²ÎÊý£¬·ÀÖ¹Æµ·±Ð´flash
 	{
+		flash.tempSet = tempKeyChangeTemp;
+		flash.humiSet = humiKeyChangeTemp;
+
 		if (checkFlashCount > 20)
 		{
 			checkFlashCount = 0;

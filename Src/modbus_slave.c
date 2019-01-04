@@ -488,15 +488,6 @@ static void MODS_10H(void)
 	{
 		value = BEBufToUint16(&g_tModS.RxBuf[7 + 2 * i]);	/* ¼Ä´æÆ÷Öµ */
 		localArray[reg_addr + i] = value;
-		//if (MODS_WriteRegValue(reg_addr + i, value) == 1)
-		//{
-		//	;
-		//}
-		//else
-		//{
-		//	g_tModS.RspCode = RSP_ERR_REG_ADDR;		/* ¼Ä´æÆ÷µØÖ·´íÎó */
-		//	break;
-		//}
 	}
 
 err_ret:

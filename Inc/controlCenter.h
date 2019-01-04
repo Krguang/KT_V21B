@@ -24,7 +24,7 @@ extern uint16_t localArray[];
 extern uint8_t fanSwitch;				//风机启停开关
 extern uint8_t standbySwitch;			//备用开关
 extern uint8_t onDutySwitch;			//值班开关
-extern uint8_t alarmSwitch;			//消音开关
+extern uint8_t alarmSwitch;				//消音开关
 
 
 extern uint8_t fanStatus;				//风机状态
@@ -35,6 +35,9 @@ extern uint8_t unitFault;				//机组故障
 
 extern uint16_t tempValue;				//温度实时值
 extern uint16_t humiValue;				//湿度实时值
+
+extern uint16_t tempKeyChangeTemp;
+extern uint16_t humiKeyChangeTemp;
 
 void paramInFlashInit(void);
 void modeSelect(void);
