@@ -145,17 +145,17 @@ void paramInFlashInit()
 */
 static void timeoutCleanData()
 {
-	if ((flash.h2Set == 1)||(flash.h2Set == 2))
+	if ((flash.h1Set == 1)||(flash.h1Set == 2))
 	{
-		if (usart_rx_flag > 20) 
+		if (usart_rx_flag > 20)
 		{
 			tempValue = 0;
 			humiValue = 0;
-
+			/*
 			fanSwitch = 0;
 			standbySwitch = 0;
 			onDutySwitch = 0;
-
+			*/
 			fanStatus = 0;
 			standbyStatus = 0;
 			onDutyStatus = 0;
