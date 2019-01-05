@@ -215,6 +215,7 @@ void StartTaskDataPrecess(void const * argument)
 {
 	/* USER CODE BEGIN StartTaskDataPrecess */
 	static uint8_t count = 0;
+	static uint8_t count1 = 0;
 
 	/* Infinite loop */
 	for (;;)
@@ -227,8 +228,16 @@ void StartTaskDataPrecess(void const * argument)
 		{
 			count = 0;
 			bsp_RunPer500ms();
+			
+			count1++;
+			if (count1 > 1)
+			{
+				count1 = 0;
+				bsp_GetAdcValue();
+			}
 		}
-		osDelay(10);
+		osDelay(10); 
+		nonCommunicationMode();
 	}
 	/* USER CODE END StartTaskDataPrecess */
 }

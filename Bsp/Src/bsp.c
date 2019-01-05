@@ -14,9 +14,6 @@ uint8_t usart2_rx_buffer[128];
 uint16_t usart2_rx_len = 0;
 uint8_t usart2_rx_flag = 0;
 
-volatile uint16_t ADC_ConvertedValue[3];
-uint32_t ADC_Average[3];
-
 /*
 *********************************************************************************************************
 *	º¯ Êý Ãû: BEBufToUint16

@@ -9,6 +9,7 @@ uint16_t localArray[LOCAL_ARRAY_LENGTH];	//存储所有数据的数组，用于modbus通讯
 
 uint16_t tempValue;				//温度实时值
 uint16_t humiValue;				//湿度实时值
+uint16_t pressValue;			//压力实时值
 
 uint16_t tempKeyChangeTemp;
 uint16_t humiKeyChangeTemp;

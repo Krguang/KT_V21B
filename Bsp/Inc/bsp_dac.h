@@ -3,4 +3,7 @@
 
 void bsp_InitDAC(void);
 
+void putTempSetOut(uint16_t tempSetValue);
+void putHumiSetOut(uint16_t humiSetValue);
+
 #endif // !__BSP_DAC

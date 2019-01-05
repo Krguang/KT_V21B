@@ -456,6 +456,9 @@
     <ClCompile Include="..\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c">
       <Filter>Source files\STM32Cube HAL\FREERTOS</Filter>
     </ClCompile>
+    <ClCompile Include="..\Bsp\Src\bsp_io.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Bsp\Inc\bsp_led_display.h">
@@ -483,6 +486,9 @@
       <Filter>Header files\Inc</Filter>
     </ClInclude>
     <ClInclude Include="..\Bsp\Inc\bsp_led.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Bsp\Inc\bsp_io.h">
       <Filter>Header files\Inc</Filter>
     </ClInclude>
   </ItemGroup>

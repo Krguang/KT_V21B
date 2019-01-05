@@ -83,6 +83,7 @@
     <ClCompile Include="..\Bsp\Src\bsp_cpu_flash.c" />
     <ClCompile Include="..\Bsp\Src\bsp_crc16.c" />
     <ClCompile Include="..\Bsp\Src\bsp_dac.c" />
+    <ClCompile Include="..\Bsp\Src\bsp_io.c" />
     <ClCompile Include="..\Bsp\Src\bsp_led.c" />
     <ClCompile Include="..\Src\controlCenter.c" />
     <ClCompile Include="..\Src\dataProcessing.c" />
@@ -118,6 +119,7 @@
     <ClInclude Include="..\Bsp\Inc\bsp_cpu_flash.h" />
     <ClInclude Include="..\Bsp\Inc\bsp_crc16.h" />
     <ClInclude Include="..\Bsp\Inc\bsp_dac.h" />
+    <ClInclude Include="..\Bsp\Inc\bsp_io.h" />
     <ClInclude Include="..\Bsp\Inc\bsp_led.h" />
     <ClInclude Include="..\Inc\controlCenter.h" />
     <ClInclude Include="..\Inc\dataProcessing.h" />

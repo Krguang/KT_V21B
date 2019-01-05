@@ -3,5 +3,6 @@
 
 void modbusSlave03DataProcess();
 void modbusSlave10DataProcess();
+void nonCommunicationMode();
 
 #endif // !__DATAPROCESSING

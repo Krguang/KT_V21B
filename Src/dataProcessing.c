@@ -75,6 +75,59 @@ static void externalProtocol10()
 	humiValue = localArray[9];
 }
 
+/*
+	非通讯模式的数据处理，包括“非通讯”和风机盘管
+*/
+void nonCommunicationMode()		
+{
+	if (flash.h1Set == 0)			//"非通讯"
+	{
+
+		fanStatus = fanStateIn();
+		standbyStatus = PN_PressStateIn();
+		onDutyStatus = onDutyStateIn();
+		hepaAlarm = hepaStateIn();
+		unitFault = unitFaultStateIn();
+
+		if (fanSwitch == 1)
+		{
+			unitRelayOn();
+		}
+		else
+		{
+			unitRelayOff();
+		}
+
+		if (standbySwitch == 1)
+		{
+			exhaustFanRelayOn();
+		}
+		else
+		{
+			exhaustFanRelayOff();
+		}
+
+		if (onDutySwitch == 1)
+		{
+			sterilampRelayOn();
+		}
+		else
+		{
+			sterilampRelayOff();
+		}
+
+		getTempIn();
+		getHumiIn();
+		putTempSetOut(flash.tempSet);
+		putHumiSetOut(flash.humiSet);
+		
+	}
+	else if (flash.h1Set == 3)		//风机盘管
+	{
+
+	}
+}
+
 void modbusSlave03DataProcess()
 {
 	if ((flash.h1Set == 1) || (flash.h1Set == 2))	//通讯模式
@@ -100,14 +153,6 @@ void modbusSlave03DataProcess()
 		default:
 			break;
 		}
-	}
-	else if (flash.h1Set == 0)		//非通讯
-	{
-
-	}
-	else if (flash.h1Set == 3)		//风机盘管
-	{
-
 	}
 }
 
@@ -136,13 +181,5 @@ void modbusSlave10DataProcess()
 		default:
 			break;
 		}
-	}
-	else if (flash.h1Set == 0)		//非通讯
-	{
-
-	}
-	else if (flash.h1Set == 3)		//风机盘管
-	{
-
 	}
 }

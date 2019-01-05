@@ -11,6 +11,7 @@
 #include "bsp_cpu_flash.h"
 #include "bsp_crc16.h"
 #include "bsp_led.h"
+#include "bsp_io.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -33,9 +34,6 @@ extern uint8_t usart2_rx_buffer_temp[];
 extern uint8_t usart2_rx_buffer[];
 extern uint16_t usart2_rx_len;
 extern uint8_t usart2_rx_flag;
-
-extern volatile uint16_t ADC_ConvertedValue[];
-extern uint32_t ADC_Average[];
 
 uint16_t BEBufToUint16(uint8_t *_pBuf);
 

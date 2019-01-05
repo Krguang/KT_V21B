@@ -35,6 +35,7 @@ extern uint8_t unitFault;				//机组故障
 
 extern uint16_t tempValue;				//温度实时值
 extern uint16_t humiValue;				//湿度实时值
+extern uint16_t pressValue;			//压力实时值
 
 extern uint16_t tempKeyChangeTemp;
 extern uint16_t humiKeyChangeTemp;
