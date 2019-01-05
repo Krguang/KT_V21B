@@ -293,6 +293,10 @@ static void operateProcessing()
 		{
 			beep_open();
 		}
+		else
+		{
+			beep_close();
+		}
 	}
 	else
 	{

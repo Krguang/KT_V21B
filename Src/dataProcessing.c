@@ -4,7 +4,7 @@
 #include "controlCenter.h"
 
 
-static void internalProtocol03()
+static void internalProtocol03()			//内部协议
 {
 	localArray[0] = fanSwitch;
 	localArray[1] = onDutySwitch;
@@ -13,7 +13,40 @@ static void internalProtocol03()
 	localArray[6] = flash.humiSet;
 }
 
-static void internalProtocol10()
+static void externalProtocol03()			//外部协议
+{
+	if (fanSwitch == 1)
+	{
+		localArray[4] |= 1;
+	}
+	else
+	{
+		localArray[4] &= ~1;
+	}
+
+	if (onDutySwitch == 1)
+	{
+		localArray[4] |= (1<<1);
+	}
+	else
+	{
+		localArray[4] &= ~(1 << 1);
+	}
+
+	if (standbySwitch == 1)
+	{
+		localArray[4] |= (1 << 2);
+	}
+	else
+	{
+		localArray[4] &= ~(1 << 2);
+	}
+
+	localArray[5] = flash.tempSet;
+	localArray[6] = flash.humiSet;
+}
+
+static void internalProtocol10()			//内部协议
 {
 	flash.tempSet = localArray[5];
 	flash.humiSet = localArray[6];
@@ -29,6 +62,19 @@ static void internalProtocol10()
 	hepaAlarm = localArray[12];
 }
 
+static void externalProtocol10()
+{
+	flash.tempSet = localArray[5];
+	flash.humiSet = localArray[6];
+	fanStatus = localArray[7]&1;
+	onDutyStatus = (localArray[7] >> 1) & 1;
+	standbyStatus = (localArray[7] >> 2) & 1;
+	unitFault = (localArray[7] >> 3) & 1;
+	hepaAlarm = (localArray[7] >> 4) & 1;
+	tempValue = localArray[8];
+	humiValue = localArray[9];
+}
+
 void modbusSlave03DataProcess()
 {
 	if ((flash.h1Set == 1) || (flash.h1Set == 2))	//通讯模式
@@ -39,6 +85,7 @@ void modbusSlave03DataProcess()
 			internalProtocol03();
 			break;
 		case 1:
+			externalProtocol03();
 			break;
 		case 2:
 			break;
@@ -74,6 +121,7 @@ void modbusSlave10DataProcess()
 			internalProtocol10();
 			break;
 		case 1:
+			externalProtocol10();
 			break;
 		case 2:
 			break;
