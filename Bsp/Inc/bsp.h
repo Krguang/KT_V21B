@@ -37,8 +37,6 @@ extern uint8_t usart2_rx_flag;
 extern volatile uint16_t ADC_ConvertedValue[];
 extern uint32_t ADC_Average[];
 
-extern volatile uint8_t g_blinkFlag_500ms;
-
 uint16_t BEBufToUint16(uint8_t *_pBuf);
 
 #endif

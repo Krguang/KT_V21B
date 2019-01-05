@@ -39,6 +39,8 @@ extern uint16_t humiValue;				//湿度实时值
 extern uint16_t tempKeyChangeTemp;
 extern uint16_t humiKeyChangeTemp;
 
+extern uint8_t usart_rx_flag;			//用于判断是否正常通讯，清空显示
+
 void paramInFlashInit(void);
 void modeSelect(void);
 void tempHumiSetCountTimeReference500ms(void);

@@ -17,11 +17,6 @@ uint8_t usart2_rx_flag = 0;
 volatile uint16_t ADC_ConvertedValue[3];
 uint32_t ADC_Average[3];
 
-volatile uint8_t g_blinkFlag_500ms;
-
-uint8_t a[16];
-
-
 /*
 *********************************************************************************************************
 *	º¯ Êý Ãû: BEBufToUint16
@@ -87,10 +82,6 @@ void bsp_RunPer500ms(void)
 {
 	displayTimeReference500ms();
 	tempHumiSetCountTimeReference500ms();
-
-//	usart1_dma_send(a, 16);
-	//HAL_UART_Transmit(&huart1, a, 16, 0xff);
-	//HAL_UART_Transmit_DMA(&huart1, a, 16);
 }
 
 /*

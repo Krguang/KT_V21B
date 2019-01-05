@@ -34,6 +34,8 @@ static uint8_t checkFanSwitchCount;
 static uint8_t checkstandbySwitchCount;
 static uint8_t checkOnDutySwitchCount;
 
+uint8_t usart_rx_flag;					//用于判断是否正常通讯，清空显示
+
 static void flashParamCheck();
 
 /*
@@ -43,6 +45,8 @@ void tempHumiSetCountTimeReference500ms()
 {
 	tempSetCount++;
 	humiSetCount++;
+
+	if (usart_rx_flag < 255) usart_rx_flag++;
 	if (checkFlashCount < 255) checkFlashCount++;
 	if (checkFanSwitchCount < 255) checkFanSwitchCount++;
 	if (checkstandbySwitchCount < 255) checkstandbySwitchCount++;
@@ -134,6 +138,33 @@ void paramInFlashInit()
 	humiKeyChangeTemp = flash.humiSet;
 }
 
+
+/*
+* 当处在通讯模式，超过10秒没有通讯上的情况下，清空数据
+*/
+static void timeoutCleanData()
+{
+	if ((flash.h2Set == 1)||(flash.h2Set == 2))
+	{
+		if (usart_rx_flag > 20) 
+		{
+			tempValue = 0;
+			humiValue = 0;
+
+			fanSwitch = 0;
+			standbySwitch = 0;
+			onDutySwitch = 0;
+
+			fanStatus = 0;
+			standbyStatus = 0;
+			onDutyStatus = 0;
+			hepaAlarm = 0;
+			unitFault = 0;
+		}
+	}
+}
+
+
 /*
 * 对外部操作处理
 */
@@ -178,7 +209,6 @@ static void operateProcessing()
 		{
 			onDutySwitch = 0;
 		}
-
 	}
 	else					//电平翻转按键
 	{
@@ -371,6 +401,7 @@ void operatingMode()
 	}
 
 	operateProcessing();
+	timeoutCleanData();
 }
 
 

@@ -34,6 +34,7 @@ void MODS_Poll(void)
 
 	if (1 == usart1_rx_flag)
 	{
+		usart_rx_flag = 0;			
 
 		memcpy(g_tModS.RxBuf, usart1_rx_buffer, usart1_rx_len);
 		g_tModS.RxCount = usart1_rx_len;
